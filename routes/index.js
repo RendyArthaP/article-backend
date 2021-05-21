@@ -1,10 +1,13 @@
 const express = require('express');
-const routes = express.Router()
+const router = express.Router();
+const articleRouter = require('./article.routes');
 
-routes.use('/', (req, res) => {
+router.get('/', (req, res) => {
   res.json({
     message: "Connecting Success"
   })
 })
 
-module.exports = routes
+router.use('/article', articleRouter)
+
+module.exports = router
