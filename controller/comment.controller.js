@@ -1,7 +1,7 @@
 const { Comment } = require('../models/')
 
 module.exports = {
-  getComment: async(req, res) => {
+  getComment: async (req, res) => {
     const comments = await Comment.find({}, "-_v")
 
     try {
