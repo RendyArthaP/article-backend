@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
 const ArticleSchema = new mongoose.Schema({
-  user_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "user"
+  image: {
+    type: String,
+    required: true
   },
-  listArticle: [
-    {
-      title: {
-        type: String,
-        required: true
-      },
-      date: {
-        type: Date,
-        default: Date.now()
-      },
-      description: {
-        type: String,
-        required: true
-      }
-    }
-  ]
+  title: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now()
+  },
+  description: {
+    type: String,
+    required: true
+  }
 })
 
 const Article = mongoose.model('article', ArticleSchema)

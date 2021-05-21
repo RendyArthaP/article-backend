@@ -13,21 +13,6 @@ module.exports = {
       res.status(500).send(error)
     }
   },
-  getArticleByUser: async(req, res) => {
-    const userID = req.params.user_id
-    const article = await Article.find({
-      "user_id": userID
-    }).populate("article", "-_v")
-
-    try {
-      res.status(200).json({
-        message: "Get article by user",
-        data: article
-      })
-    } catch(error) {
-      res.status(500).send(error)
-    }
-  },
   getArticleByID: async(req, res) => {
     const ids = req.params.id
     const article = await Article.findById(ids)
@@ -42,17 +27,7 @@ module.exports = {
     }
   },
   addArticle: async(req, res) => {
-    let article = await Article.findOne({
-      user_id: req.body.user_id
-    })
-    if(article) {
-      article.listArticle.push(req.body.article)
-      article.save()
-    } else {
-      article = await Article.create(req.body)
-      article.listArticle.push(req.body.article)
-      article.save()
-    }
+    const article = await Article.create(req.body)
 
     try {
       res.status(200).json({
