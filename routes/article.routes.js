@@ -3,6 +3,7 @@ const router = express.Router()
 
 const {
   getArticle,
+  getArticleByUser,
   getArticleByID,
   addArticle,
   updateArticle,
@@ -10,6 +11,7 @@ const {
 } = require('../controller/article.controller');
 
 router.get('/', getArticle)
+router.get('/user/:user_id', getArticleByUser)
 router.get('/:id', getArticleByID)
 router.post('/', addArticle)
 router.put('/:id', updateArticle)

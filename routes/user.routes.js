@@ -13,6 +13,6 @@ router.get('/', getUser)
 router.get('/:id', getUserById)
 router.post('/', postUser)
 router.put('/:id', updateUser)
-router.deleteUser('/:id', deleteUser)
+router.delete('/:id', deleteUser)
 
 module.exports = router
