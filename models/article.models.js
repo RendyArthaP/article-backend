@@ -12,6 +12,10 @@ const ArticleSchema = new mongoose.Schema({
     type: Date,
     default: Date.now()
   },
+  category: {
+    type: String,
+    required: true
+  },
   description: {
     type: String,
     required: true
