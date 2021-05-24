@@ -7,12 +7,13 @@ module.exports = {
   handleLogin: async(req, res) => {
     const { name, password } = req.body
     let users = await User.findOne({name})
-    const comparePassword = bcrypt.compareSync(password, users.passwordUser)
+    const comparePassword = bcrypt.compareSync(password, users.password)
 
     if(users && comparePassword) {
       users = users.toObject()
       const { password, ...payload } = users
       const token = jwt.sign(payload, JWT_KEY)
+      console.log(token)
 
       res.status(200).json({
         message: "Login Success",
