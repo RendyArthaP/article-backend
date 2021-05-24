@@ -32,6 +32,25 @@ module.exports = {
       res.status(500).send(error)
     }
   },
+  getUserByName: async(req, res) => {
+    const user = await User.find(
+      {"name": req.params.name}
+    )
+    try {
+      if(!user) {
+        res.status(500).json({
+          message: "You can't find your name user"
+        })
+      } else {
+        res.status(200).json({
+          message: "You get user by name",
+          data: user
+        })
+      }
+    } catch(error) {
+      res.status(500).send(error)
+    }
+  },
   postUser: async(req, res) => {
     const user = await User.create(req.body)
 
