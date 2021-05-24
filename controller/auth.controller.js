@@ -40,5 +40,12 @@ module.exports = {
       message: "Register success",
       data: user
     })
+  },
+  handleUser: async(req, res) => {
+    const data = jwt.decode(req.body.data)
+
+    res.send({
+      data: data
+    })
   }
 }

@@ -3,10 +3,12 @@ const router = express.Router()
 
 const {
   handleLogin,
-  handleRegister
+  handleRegister,
+  handleUser
 } = require('../controller/auth.controller.js')
 
 router.post('/login', handleLogin)
 router.post('/register', handleRegister)
+router.post('/user', handleUser)
 
 module.exports = router
