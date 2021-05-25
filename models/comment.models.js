@@ -4,9 +4,9 @@ const CommentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "article"
   },
-  username: {
-    type: String,
-    require: true
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user"
   },
   comment: {
     type: String,
