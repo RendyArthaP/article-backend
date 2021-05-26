@@ -16,7 +16,7 @@ module.exports = {
   getCommentByArticle: async(req, res) => {
     const comments = await Comment.find({
       "article_id": req.params.article_id,
-    }).populate("article_id user_id", "-_v")
+    }).populate("article_id user_id", "-_v -email -password")
 
     try {
       res.status(200).json({
